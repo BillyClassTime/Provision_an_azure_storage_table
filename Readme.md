@@ -1,18 +1,31 @@
 # Challenge for Azure students
 
-Create a web project and up in git to deploy in azure app service from git repository
+## Deployment on Azure App Service from a published content and zipped ☁️
 
-> Note:
+1. Create a web project in dotnet
+2. Create a App Service on Azure
 
-Consider build with the below commands, if you do change in the code and want to deploy it:
+> [!IMPORTANT]
+>
+> Consider use the commands bellow, if you do changes in the code and want to re-deploy it:
+>
+> ```powershell
+> dotnet publish  --configuration Release --output out
+> Compress-Archive -Path .\out\* -DestinationPath ArchitectureChallange.zip -Force
+> ```
 
-```bash
-dotnet publish  --configuration Release --output out
-Compress-Archive -Path .\out\* -DestinationPath ArchitectureChallange.zip.zip -Force
+3. Deploy to Azure (whether you have changed the code or not):
+
+   ```powershell
+   az webapp deploy --resource-group [ResourceGroup name] --name [webappservicename] --src-path ArchitectureChallange.zip 
+   ```
+
+**Happy Coding!**
+
+> 😉 **Remember to connect to Azure**
+
 ```
-
-> Deploy to Azure with (whether you have changed the code or not):
-
-```
-az webapp deployment source config-zip --resource-group [ResourceGroup Name] --src .\ ArchitectureChallange.zip --name [webappservicename]
+az account set --subscription [Subscription ID]
+az login
+az group list --output table
 ```
