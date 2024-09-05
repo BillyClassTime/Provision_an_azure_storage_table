@@ -10,8 +10,8 @@
 > Consider use the commands bellow, if you do changes in the code and want to re-deploy it:
 >
 > ```powershell
-> dotnet publish  --configuration Release --output out
-> Compress-Archive -Path .\out\* -DestinationPath ArchitectureChallange.zip -Force
+> dotnet publish  --configuration Release --output publish
+> Compress-Archive -Path .\publish\* -DestinationPath ArchitectureChallange.zip -Force
 > ```
 
 3. Deploy to Azure (whether you have changed the code or not):
